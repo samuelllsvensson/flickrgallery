@@ -1,0 +1,173 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Barlow", sans-serif;
+  background-color: #000735;
+  color: #eab8b2;
+}
+
+/* Title and search bar container */
+#header {
+  overflow: hidden;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#header h1 {
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+input[type="submit"] {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 3px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+#search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10;
+}
+
+#search h2 {
+  font-size: 16pt;
+}
+
+label {
+  font-size: 1rem;
+  padding-right: 10px;
+}
+
+/* Search bar */
+input[type="text"] {
+  padding: 10px;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+/* Search icon */
+form#searchForm button {
+  padding: 10px;
+  border: 0;
+  background: #eab8b2;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Filter styling */
+#filters-container {
+  display: flex;
+  align-items: center;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #2c3e50;
+  background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+#select-no-results-container {
+  position: relative;
+  display: flex;
+  width: 4em;
+  height: 2em;
+  line-height: 2;
+  overflow: hidden;
+  border-radius: 0.25em;
+}
+select {
+  flex: 1;
+  padding: 0 0.5em;
+  width: 1vw !important;
+  color: #fff;
+  cursor: pointer;
+}
+/* Arrow */
+#select-no-results-container::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 0.5em;
+  background: #eab8b2;
+  color: #fff;
+
+  cursor: pointer;
+  pointer-events: none;
+}
+
+/* Gallery */
+#gallery {
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-rows: repeat(auto-fit, 400px);
+  grid-auto-flow: dense;
+
+  grid-gap: 0.3rem;
+}
+.cell {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+/* CSS loader animation */
+#loading {
+  width: 2rem;
+  height: 2rem;
+  border: 5px solid #f3f3f3;
+  border-top: 6px solid #9c41f2;
+  border-radius: 100%;
+  margin: auto;
+  visibility: hidden;
+  animation: spin 1s infinite linear;
+}
+
+#loading.display {
+  visibility: visible;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

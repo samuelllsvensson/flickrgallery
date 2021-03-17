@@ -1,0 +1,43 @@
+
+<html>
+  <head>
+    <title>Flickr Gallery</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <script type="text/javascript" src="../js/client.js" defer></script>
+  </head>
+  
+  <body>
+    <div id="header">
+      <h1>Flickr Gallery</h1>
+      <div id="search">
+        <h2>Search: </h2>  
+        &nbsp; &nbsp;
+        <form id="searchForm" action="javascript://" onSubmit="return validateForm()" method="POST" required>
+          <input type="text" placeholder="'Cute dog', 'Cygni' ..." id="searchVal">
+          <button type="submit" class="submitSearch"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+        <div id="filters-container">
+          <label for="no-results">No. of results:</label>
+
+          <div id="select-no-results-container">
+            <select name="select-no-results" id="no-results">
+              <option selected value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+        </div>
+        <span id="errortext"></span>
+        <div id="loading"></div>
+      </div>
+      
+    </div>
+    <div id="gallery"></div>
+  </body>
+</html>

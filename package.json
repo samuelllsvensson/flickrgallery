@@ -1,0 +1,48 @@
+{
+  "name": "flickrgallery",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "transpile": "babel ./server --out-dir dist-server",
+    "watch:dev": "nodemon",
+    "test": "jest"
+  },
+  "author": {
+    "name": "Samuel Svensson",
+    "url": "https://github.com/samuelllsvensson"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "~4.16.1",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.2",
+    "sass": "^1.32.8"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "nodemonConfig": {
+    "exec": "npm run dev",
+    "watch": [
+      "server/*",
+      "public/*"
+    ],
+    "ignore": [
+      "**/__tests__/**",
+      "*.test.js",
+      "*.spec.js"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
