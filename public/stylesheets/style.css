@@ -129,6 +129,15 @@ select {
   pointer-events: none;
 }
 
+h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+a {
+  color: inherit;
+  text-decoration: none; /* no underline */
+}
 /* Gallery */
 #gallery {
   width: 80vw;
