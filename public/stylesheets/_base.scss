@@ -1,0 +1,36 @@
+$font-stack: "Barlow", sans-serif;
+$font-header-stack: "Barlow Semi Condensed", sans-serif;
+
+$primary-color: #eab8b2;
+$secondary-color: #000735;
+$white: hsl(0, 0%, 100%);
+$red: #ff0000;
+$light-grey: #ccc;
+$light-blue: #2c3e50;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Barlow", sans-serif;
+  background-color: #000735;
+  color: #eab8b2;
+}
+
+h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+a {
+  color: inherit;
+  text-decoration: none; /* no underline */
+}
+
+label {
+  font-size: 1rem;
+  padding-right: 10px;
+}

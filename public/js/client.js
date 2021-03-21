@@ -1,51 +1,40 @@
-// Make sure DOMContentLoaded event is triggered before assigning click listener
 window.onload = () => {
+  // Make sure DOMContentLoaded event is triggered before assigning click listener
   document.addEventListener("DOMContentLoaded", () => {
     document
-      .querySelector(".submitSearch")
+      .querySelector(".submit-search")
       .addEventListener("click", () => {}, false);
   });
 };
 
-// Register service worker
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("/sw.js");
-  });
-}
-
 const validateForm = () => {
-  var search = document.getElementById("searchVal");
-  var error = document.getElementById("errortext");
-  var noResults = document.getElementById("no-results");
-  var container = document.getElementById("gallery");
+  const search = document.getElementById("search-val");
+  let error = document.getElementById("error-feedback");
+  const noResults = document.getElementById("results");
+  const container = document.getElementById("gallery");
 
   // TODO: Clean up existing images in a better way
   if (container.children.length > 0) {
     container.innerHTML = "";
   }
-  var resultsCount = parseInt(noResults.options[noResults.selectedIndex].value);
+  const resultsCount = parseInt(
+    noResults.options[noResults.selectedIndex].value
+  );
 
   if (search.value == "") {
-    error.innerHTML = "Search field cannot be empty";
+    error.innerHTML = "Search field cannot be empty.";
     return false;
   } else {
-    getImages(search.value, resultsCount);
+    var isRadiusSearch = document.getElementById("radius-search").checked;
+    getImages(search.value, resultsCount, isRadiusSearch);
   }
 };
-const createNode = (element) => {
-  return document.createElement(element);
-};
 
-const append = (parent, el) => {
-  return parent.appendChild(el);
-};
-
-const getImages = (searchVal, resultsCount) => {
-  const container = document.getElementById("gallery");
+const getImages = (searchVal, resultsCount, isRadiusSearch) => {
   showSpinner();
-
-  fetch(`/home/${searchVal}/${resultsCount}`)
+  fetch(
+    `/gallery/?search=${searchVal}&per_page=${resultsCount}&radiusSearch=${isRadiusSearch}`
+  )
     .then(function (response) {
       if (response.ok) {
         return response.json();
@@ -54,21 +43,9 @@ const getImages = (searchVal, resultsCount) => {
       }
     })
     .then(function (data) {
-      //console.log(data.photos.photo);
-      let images = data.photos.photo;
+      const images = data.photos.photo;
+      addImages(images);
       hideSpinner();
-
-      return images.map(function (image) {
-        let imageURL = new URL(
-          `https://live.staticflickr.com/${image.server}/${image.id}_${image.secret}_w.jpg`
-        );
-        let img = new Image();
-        img.src = imageURL;
-        let tile = createNode("div");
-        tile.classList.add("cell");
-        append(container, tile);
-        append(tile, img);
-      });
     })
     .catch(function (err) {
       console.warn("Something went wrong when fetching images:", err);
@@ -76,16 +53,45 @@ const getImages = (searchVal, resultsCount) => {
     });
 };
 
-const loader = document.querySelector("#loading");
+const addImages = (images) => {
+  const container = document.getElementById("gallery");
+  const search = document.getElementById("search-val");
+  let feedback = document.getElementById("gallery-feedback");
+  let error = document.getElementById("error-feedback");
 
-function showSpinner() {
+  if (images.length === 0) {
+    feedback.innerHTML = `No images related to "${search.value}" could be found on Flickr, please try again.`;
+  } else {
+    feedback.innerHTML = "";
+    error.innerHTML = "";
+
+    return images.map(function (image) {
+      let imageURL = new URL(
+        `https://live.staticflickr.com/${image.server}/${image.id}_${image.secret}_w.jpg`
+      );
+      let img = new Image();
+      img.src = imageURL;
+      let tile = document.createElement("div");
+      tile.classList.add("cell");
+      append(container, tile);
+      append(tile, img);
+    });
+  }
+};
+
+const loader = document.getElementById("loading");
+
+const showSpinner = () => {
   loader.classList.add("display");
-  // to stop loading after some time
   setTimeout(() => {
     loader.classList.remove("display");
   }, 5000);
-}
+};
 
-function hideSpinner() {
+const hideSpinner = () => {
   loader.classList.remove("display");
-}
+};
+
+const append = (parent, el) => {
+  return parent.appendChild(el);
+};
