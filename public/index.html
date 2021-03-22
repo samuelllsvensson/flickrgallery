@@ -2,8 +2,7 @@
 <html>
   <head>
     <title>Flickr Gallery</title>
-    <link rel="stylesheet" href="/stylesheets/base.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap" rel="stylesheet">
@@ -14,7 +13,7 @@
   </head>
   
   <body>
-    <div id="header">
+    <header>
       <h1><a href="/">Flickr Gallery</a></h1>
       <div id="search">
         <h2>Search: </h2>  
@@ -36,10 +35,10 @@
         </div>
       </div>
       <div id="geo-query-container"> 
-        <input type="checkbox" id="radius-search" name="radius-search" >
-        <label for="radius-search" style="margin-right: 1rem" >Search within Stockholm area</label>
+        <input type="checkbox" id="radius-search" name="radius-search">
+        <label for="radius-search" style="margin-right: 1rem">Search within Stockholm area</label>
       </div>
-    </div>
+    </header>
     <div id="divider">Images</div>
     <span id="gallery-feedback">You need to search for something to view any images.</span>
     <div id="loading"></div>

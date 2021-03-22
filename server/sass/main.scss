@@ -1,0 +1,488 @@
+// _base.scss
+@use 'base';
+@use '_divider';
+@use '_loading';
+@use "variables";
+@import "media";
+
+/* Header main container */
+header {
+  overflow: hidden;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  h1 {
+    font-family: variables.$font-header-stack;
+    @include mobile {
+      font-size: 2.3rem;
+    }
+    @include tablet {
+      font-size: 3.5rem;
+    }
+    @include small-screen {
+      font-size: 3.6rem;
+    }
+    @include desktop {
+      font-size: 3.9rem;
+    }
+    @include hd-desktop {
+      font-size: 3.5rem;
+    }
+  }
+
+  div#search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10;
+    h2 {
+      margin-right: 1rem;
+      @include mobile {
+        font-size: 2rem;
+      }
+      @include tablet {
+        font-size: 2.1rem;
+      }
+      @include small-screen {
+        font-size: 2rem;
+      }
+      @include desktop {
+        font-size: 1.8rem;
+      }
+      @include hd-desktop {
+        font-size: 1.5rem;
+      }
+    }
+
+    form#search-form {
+      display: flex;
+      align-items: center;
+      /* Search bar */
+      input[type="text"]#search-val {
+        border: 0;
+        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+        border-radius: 5px;
+        outline: none;
+        @include mobile {
+          width: 13rem;
+          padding: 10px;
+          font-size: 15pt;
+          border-radius: 10px;
+        }
+        @include tablet {
+          width: 15rem;
+          padding: 10px;
+          font-size: 16pt;
+          border-radius: 9px;
+        }
+        @include small-screen {
+          width: 13rem;
+          padding: 10px;
+          font-size: 14pt;
+          border-radius: 8px;
+        }
+        @include desktop {
+          width: 12rem;
+          padding: 9px;
+          font-size: 13pt;
+          border-radius: 7px;
+        }
+        @include hd-desktop {
+          width: 11rem;
+          padding: 8px;
+          font-size: 12pt;
+          border-radius: 6px;
+        }
+      }
+      /* Search icon */
+      button.submit-search {
+        padding: 10px;
+        border: 0;
+        background: variables.$primary-color;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        outline: none;
+        @include mobile {
+          margin-left: 9px;
+          padding: 0.6rem;
+          font-size: 1.5rem;
+          border-radius: 10px;
+        }
+        @include tablet {
+          margin-left: 7px;
+          padding: 0.7rem;
+          font-size: 1.6rem;
+          border-radius: 9px;
+        }
+        @include small-screen {
+          margin-left: 6px;
+          padding: 0.6rem;
+          font-size: 1.5rem;
+          border-radius: 8px;
+        }
+        @include desktop {
+          margin-left: 5px;
+          padding: 0.6rem;
+          font-size: 1.3rem;
+          border-radius: 7px;
+        }
+        @include hd-desktop {
+          margin-left: 5px;
+          padding: 0.5rem;
+          font-size: 1.2rem;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+
+  /* When user has not entered anything in search bar */
+  span#error-feedback {
+    color: variables.$red;
+    @include mobile {
+      font-size: 1.3rem;
+    }
+    @include tablet {
+      font-size: 1.2rem;
+    }
+    @include small-screen {
+      font-size: 1.1rem;
+    }
+    @include desktop {
+      font-size: 1rem;
+    }
+    @include hd-desktop {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Number of results styling */
+  div#results-container {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    label#results-label {
+      @include mobile {
+        font-size: 1.2rem;
+      }
+      @include tablet {
+        font-size: 1.3rem;
+      }
+      @include small-screen {
+        font-size: 1.2rem;
+      }
+      @include desktop {
+        font-size: 1.1rem;
+      }
+      @include hd-desktop {
+        font-size: 1rem;
+      }
+    }
+    /* Number of results select option */
+    div#select-results-container {
+      position: relative;
+      display: flex;
+      line-height: 2;
+      overflow: hidden;
+      border-radius: 0.25em;
+      @include mobile {
+        height: 2.3em;
+        line-height: 2.4;
+        border-radius: 0.5em;
+        width: 6rem;
+      }
+      @include tablet {
+        height: 2.3em;
+        line-height: 2.4;
+        border-radius: 0.4em;
+        width: 5.9rem;
+      }
+      @include small-screen {
+        height: 2.2em;
+        line-height: 2.2;
+        border-radius: 0.3em;
+        width: 5.7rem;
+      }
+      @include desktop {
+        height: 2em;
+        line-height: 2;
+        border-radius: 0.25em;
+        width: 5.5rem;
+      }
+      @include hd-desktop {
+        height: 2em;
+        line-height: 2;
+        border-radius: 0.25em;
+        width: 5rem;
+      }
+
+      /* Results select */
+      select#results {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        outline: 0;
+        box-shadow: none;
+        border: 0 !important;
+        background: variables.$light-blue;
+        background-image: none;
+
+        flex: 1;
+        color: variables.$white;
+        cursor: pointer;
+
+        @include mobile {
+          padding: 0 0.6em;
+          font-size: 1.3rem;
+        }
+        @include tablet {
+          padding: 0 0.6em;
+          font-size: 1.2rem;
+        }
+        @include small-screen {
+          padding: 0 0.8em;
+          font-size: 1.1rem;
+        }
+        @include desktop {
+          padding: 0 0.9em;
+          font-size: 1rem;
+        }
+        @include hd-desktop {
+          padding: 0 1em;
+          font-size: 0.9rem;
+        }
+        &:focus {
+          min-width: 1.1rem;
+          width: auto;
+        }
+      }
+      /* Arrow */
+      &::after {
+        content: "\25BC";
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: variables.$primary-color;
+        color: variables.$white;
+        cursor: pointer;
+        pointer-events: none;
+        @include mobile {
+          padding: 0 0.7em;
+        }
+        @include tablet {
+          padding: 0 0.7em;
+        }
+        @include small-screen {
+          padding: 0 0.7em;
+        }
+        @include desktop {
+          padding: 0 0.6em;
+        }
+        @include hd-desktop {
+          padding: 0 0.5em;
+        }
+      }
+    }
+  }
+
+  /* Geo query checkbox */
+  #geo-query-container {
+    display: flex;
+    align-items: center;
+    input[type="checkbox"]#radius-search {
+      @include mobile {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+      @include tablet {
+        width: 1.4rem;
+        height: 1.4rem;
+      }
+      @include small-screen {
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+      @include desktop {
+        width: 1.1rem;
+        height: 1.1rem;
+      }
+      @include hd-desktop {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+    label {
+      @include mobile {
+        margin-left: 0.8rem;
+        font-size: 0.8rem;
+      }
+      @include tablet {
+        margin-left: 0.8rem;
+        font-size: 1.4rem;
+      }
+      @include small-screen {
+        margin-left: 0.7rem;
+        font-size: 1.4rem;
+      }
+      @include desktop {
+        margin-bottom: 0.1rem;
+        font-size: 1.3rem;
+      }
+      @include hd-desktop {
+        margin-bottom: 0.1rem;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+/* Gallery styling */
+#gallery-feedback {
+  display: flex;
+  justify-content: center;
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  @include mobile {
+    font-size: 1.2rem;
+  }
+  @include tablet {
+    font-size: 1.6rem;
+  }
+  @include small-screen {
+    font-size: 1.5rem;
+  }
+  @include desktop {
+    font-size: 1.4rem;
+  }
+  @include hd-desktop {
+    font-size: 1.2rem;
+  }
+}
+/* Gallery styling */
+#gallery {
+  display: grid;
+  --auto-grid-min-size: 16rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--auto-grid-min-size), 1fr)
+  );
+  grid-gap: 1rem;
+  margin-top: 1rem;
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  div.cell {
+    justify-self: center;
+
+    /* Grid images (thumbnails) */
+    img {
+      width: 20rem;
+      height: 20rem;
+      border: 1px solid variables.$light-grey;
+      max-width: 100%;
+      object-fit: cover;
+    }
+    /* Modal background */
+    .modal {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      padding-top: 5rem;
+      left: 0;
+      top: 0;
+
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.9);
+      /* Modal image */
+      .modal-content {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: auto;
+        max-height: 80vh;
+        max-width: 70%;
+      }
+      /* Caption */
+      div#caption {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 100%;
+        max-width: 70%;
+        color: variables.$light-grey;
+        margin-top: 10px;
+        @include mobile {
+          font-size: 17pt;
+        }
+        @include tablet {
+          font-size: 16pt;
+        }
+        @include small-screen {
+          font-size: 15pt;
+        }
+        @include desktop {
+          font-size: 14pt;
+        }
+        @include hd-desktop {
+          font-size: 14pt;
+        }
+      }
+      /* Transition animation on click */
+      .modal-content,
+      #caption {
+        -webkit-animation-name: enlarge;
+        -webkit-animation-duration: 0.3s;
+        animation-name: enlarge;
+        animation-duration: 0.3s;
+      }
+      /* Close button */
+      span.close {
+        position: absolute;
+        top: 5vh;
+        right: 3vw;
+        color: variables.$white;
+        font-size: 5rem;
+        font-weight: bold;
+        transition: 0.2s;
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+/* Modal animation */
+@-webkit-keyframes enlarge {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes enlarge {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

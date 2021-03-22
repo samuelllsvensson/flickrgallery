@@ -1,0 +1,25 @@
+@use "variables";
+
+/* Loader animation feedback */
+#loading {
+  width: 2rem;
+  height: 2rem;
+  border: 5px solid variables.$white;
+  border-top: 6px solid variables.$primary-color;
+  border-radius: 100%;
+  margin: auto;
+  visibility: hidden;
+  animation: rotate 1s infinite linear;
+  &.display {
+    visibility: visible;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

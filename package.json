@@ -1,19 +1,27 @@
 {
   "name": "flickrgallery",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "private": true,
+  "main": "app.js",
   "scripts": {
-    "start": "node ./server/app.js",
-    "test": "jest"
+    "start": "node --experimental-specifier-resolution=node app.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose"
   },
   "author": {
-    "name": "Samuel Svensson",
-    "url": "https://github.com/samuelllsvensson"
+    "name": "Samuel Svensson"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samuelllsvensson/flickrgallery"
   },
   "devDependencies": {
-    "jest": "^26.6.3",
-    "supertest": "^6.1.3"
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@testing-library/jest-dom": "^5.11.9",
+    "jest": "^26.6.3",s
+    "jest-mock-axios": "^4.3.0"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -21,8 +29,14 @@
     "express": "~4.16.1",
     "sass": "^1.32.8"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "jest": {
-    "testEnvironment": "node",
+    "testEnvironment": "jest-environment-node",
+    "transform": {},
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ]

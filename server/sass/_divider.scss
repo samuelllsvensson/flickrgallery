@@ -1,0 +1,72 @@
+@use "base";
+@use "variables";
+@import "media";
+
+/* Divider styling */
+div#divider {
+  font-family: variables.$font-stack;
+  color: variables.$primary-color;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include mobile {
+    font-size: 1.5rem;
+  }
+  @include tablet {
+    font-size: 2.2rem;
+  }
+  @include small-screen {
+    font-size: 2rem;
+  }
+  @include desktop {
+    font-size: 1.8rem;
+  }
+  @include hd-desktop {
+    font-size: 1.6rem;
+  }
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    @include mobile {
+      height: 0.06em;
+      min-width: 30vw;
+    }
+    @include tablet {
+      height: 0.06em;
+      min-width: 30vw;
+    }
+    @include small-screen {
+      height: 0.06em;
+      min-width: 35vw;
+    }
+    @include desktop {
+      height: 0.06em;
+      min-width: 40vw;
+    }
+    @include hd-desktop {
+      height: 0.06em;
+      min-width: 45vw;
+    }
+  }
+
+  &::before {
+    background: linear-gradient(
+      to right,
+      rgba(240, 240, 240, 0),
+      variables.$primary-color
+    );
+    margin-right: 1vh;
+  }
+
+  &::after {
+    background: linear-gradient(
+      to left,
+      rgba(240, 240, 240, 0),
+      variables.$primary-color
+    );
+    margin-left: 1vh;
+  }
+}
