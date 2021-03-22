@@ -20,7 +20,7 @@
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "@testing-library/jest-dom": "^5.11.9",
-    "jest": "^26.6.3",s
+    "jest": "^26.6.3",
     "jest-mock-axios": "^4.3.0"
   },
   "dependencies": {
