@@ -1,28 +1,26 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Flickr Gallery</title>
-    <link rel="stylesheet" href="/stylesheets/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-    <script type="text/javascript" src="../js/client.js" defer></script>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-
+    <meta name="description" content="A Flickr Gallery" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="./images/favicon_16.png">
+    <title>Flickr Gallery</title>
   </head>
-  
   <body>
     <header>
       <h1><a href="/">Flickr Gallery</a></h1>
+      <!-- Search bar and button  -->
       <div id="search">
         <h2>Search: </h2>  
-        <form id="search-form" action="javascript://" onSubmit="return validateForm()" method="POST" required>
+        <form id="search-form" action="javascript://" onsubmit="return validateForm()" method="POST" required>
           <input type="text" placeholder="'Cute dog', 'Cygni' ..." id="search-val">
-          <button type="submit" class="submit-search"><i class="fa fa-search"></i></button>
+          <button type="submit"  id="submit-search" aria-label="search"><i class="fa fa-search"></i></button>
         </form>
       </div>
       <span id="error-feedback"></span>
+      <!-- No. of results select  -->
       <div id="results-container">
         <label for="results" id="results-label">No. of results:</label>
         <div id="select-results-container">
@@ -34,6 +32,7 @@
           </select>
         </div>
       </div>
+      <!-- Query by radius  -->
       <div id="geo-query-container"> 
         <input type="checkbox" id="radius-search" name="radius-search">
         <label for="radius-search" style="margin-right: 1rem">Search within Stockholm area</label>
