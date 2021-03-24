@@ -3,7 +3,7 @@ import { makeAPICall } from "../api.js";
 
 const router = express.Router();
 
-// API Endpoint which performs an async call to makeAPICall and sends data to client.
+// API Endpoint which performs an async call to makeAPICall using data from client.
 router.get("/gallery", async (req, res) => {
   // Convert string to bool
   var radiusBool = req.query.radiusSearch === "true";
