@@ -8,9 +8,11 @@
   border-top: 6px solid variables.$primary-color;
   border-radius: 100%;
   margin: auto;
+  display: none;
   visibility: hidden;
   animation: rotate 1s infinite linear;
   &.display {
+    display: block;
     visibility: visible;
   }
 }
