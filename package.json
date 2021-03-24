@@ -1,41 +1,49 @@
 {
   "name": "flickrgallery",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "type": "module",
-  "private": true,
-  "main": "app.js",
-  "scripts": {
-    "start": "node --experimental-specifier-resolution=node app.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose"
-  },
   "author": {
     "name": "Samuel Svensson"
   },
+  "main": "app.js",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/samuelllsvensson/flickrgallery"
+  },
+  "scripts": {
+    "start": "npm run prod",
+    "start:dev": "npm run dev",
+    "build": "npm-run-all clean build:css lint bundle",
+    "clean": "rimraf dist",
+    "build:css": "sass --style=compressed server/scss/main.scss dist/css/main.min.css",
+    "lint": "npx eslint . --fix --ext .js",
+    "bundle": "webpack --config webpack.config.js",
+    "server": "node --experimental-specifier-resolution=node app.js",
+    "dev": "set NODE_ENV=development&&npm run server",
+    "prod": "set NODE_ENV=production&&npm-run-all build server",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose"
+  },
+  "dependencies": {
+    "axios": ">=0.21.1",
+    "express": "~4.16.1",
+    "sass": "^1.32.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "@testing-library/jest-dom": "^5.11.9",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.22.0",
+    "html-webpack-plugin": "^5.3.1",
     "jest": "^26.6.3",
-    "jest-mock-axios": "^4.3.0"
-  },
-  "dependencies": {
-    "axios": "^0.21.1",
-    "cors": "^2.8.5",
-    "express": "~4.16.1",
-    "sass": "^1.32.8"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.27.2",
+    "webpack-cli": "^4.5.0"
   },
   "jest": {
-    "testEnvironment": "jest-environment-node",
     "transform": {},
     "coveragePathIgnorePatterns": [
       "/node_modules/"
