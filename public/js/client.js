@@ -50,7 +50,7 @@ const getImages = (searchVal, resultsCount, isRadiusSearch) => {
   loader.classList.add("display");
 
   fetch(
-    `/gallery/?search=${searchVal}&per_page=${resultsCount}&radiusSearch=${isRadiusSearch}`
+    `/gallery/?search=${searchVal}&results=${resultsCount}&radiusSearch=${isRadiusSearch}`
   )
     .then((response) => {
       if (response.ok) {

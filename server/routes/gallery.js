@@ -9,7 +9,7 @@ router.get("/gallery", async (req, res) => {
   var radiusBool = req.query.radiusSearch === "true";
   let data = {
     text: req.query.search,
-    resultsCount: req.query.per_page,
+    resultsCount: req.query.results,
     isRadiusSearch: radiusBool,
   };
 
