@@ -88,12 +88,15 @@ The server consists of one route _/gallery_ which wraps the Flickr API. The sear
 
 When the client has received a response from the server, a thumbnail and original image URL is constructed from the respective source ID, server-ID and secret for every image as mentioned [here](https://www.flickr.com/services/api/misc.urls.html). This is a much safer way than simply using the URL given from using a URL retrieved from the optional configuration parameter "extras" since some images may not have an _url_m_ field for example. This way we ensure that images are always being rendered on the client. Right now, the server fetches images with the _w_ suffix (small image with maximum width of 400px). Flickr responses are by default JSONP format, so we add the parameter _nojsoncallback=1_ to get raw json without a function wrapper.
 
-Since I was only allowed to use Vanilla JS and Sass, a series of functions were implemented which iteratively create DOM elements and appends them to the gallery container.
+Since I was only allowed to use Vanilla JS and Sass, a series of functions were implemented which iteratively create DOM elements and appends them to the gallery container upon receiving the data from the server.
 
-Styling is done using Sass which is compiled to a compressed and minified css when building. The _/sass_ folder contains several files to keep it organized. I defined mixins for clean usage of media queries within the main.scss file and nested everything.
+Styling is done using Sass. The _/sass_ folder contains several files to keep it organized. I defined mixins for media queries to use within the main.scss file and nested the rest of the styling everything accordingly.
 
-Building the static resources for production is done using Webpack. Webpack bundles and concatenates the client code and static assets and creates a _dist_ folder which is then served by Express. Webpack also minifies the code for optimization.
+Building the static resources for production usage is done using Webpack. Webpack bundles and concatenates the client code and static assets and creates a _dist_ folder which is then served by Express. Webpack also minifies the code for optimization and Sass compiles a _main.min.css_ in a compressed/minified format.
+I'm also using HtmlWebpackPlugin to create a new index.html in _dist_ by using the index-template.html. This template only consists of different js/css script imports relative to the _dist_ folder.
+
+<sup>I tried injecting the imports on build but could not manage to remove the original imports from the newly created html in _dist_. I'm open to hearing if there are any better ways of doing this.</sup>
 
 ##### Additional Notes
 
-- I added Font Awesome with CDN to make the search button prettier. I hope this is okay.
+- I added Font Awesome with CDN to make the search button prettier. I hope this is allowed.
