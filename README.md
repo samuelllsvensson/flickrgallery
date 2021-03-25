@@ -84,6 +84,8 @@ Even though I'm quite new to unit testing, I managed to write some basic tests u
 
 #### Description
 
+<sup>Note: This project was developed on Windows.</sub>
+
 The server consists of one route _/gallery_ which wraps the Flickr API. The searched text, amount of results and a bool telling the server if a query needs to be performed is sent as URL parameters _/?search="dog"&results=30&radiusSearch=true_.
 
 When the client has received a response from the server, a thumbnail and original image URL is constructed from the respective source ID, server-ID and secret for every image as mentioned [here](https://www.flickr.com/services/api/misc.urls.html). This is a much safer way than simply using the URL given from using a URL retrieved from the optional configuration parameter "extras" since some images may not have an _url_m_ field for example. This way we ensure that images are always being rendered on the client. Right now, the server fetches images with the _w_ suffix (small image with maximum width of 400px). Flickr responses are by default JSONP format, so we add the parameter _nojsoncallback=1_ to get raw json without a function wrapper.
