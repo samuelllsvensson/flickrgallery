@@ -29,9 +29,9 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "public/index.html",
+      template: "public/index-template.html",
+      inject: false,
       filename: path.resolve(__dirname, "dist/index.html"),
-      publicPath: "./js",
     }),
   ],
 };

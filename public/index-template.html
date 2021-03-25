@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta name="description" content="A Flickr Gallery" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/main.min.css">
+    <!-- Suppress 404 favicon requests -->
+    <link rel="icon" href="data:,">
+    <script src="./js/main.bundle.js"></script>
+    <title>Flickr Gallery</title>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">Flickr Gallery</a></h1>
+      <!-- Search bar and button  -->
+      <div id="search">
+        <h2>Search: </h2>  
+        <form id="search-form" action="javascript://" onsubmit="return validateForm()" method="POST" required>
+          <input type="text" placeholder="'Cute dog', 'Cygni' ..." id="search-val">
+          <button type="submit"  id="submit-search" aria-label="search"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      <span id="error-feedback"></span>
+      <!-- No. of results select  -->
+      <div id="results-container">
+        <label for="results" id="results-label">No. of results:</label>
+        <div id="select-results-container">
+          <select name="select-results" id="results">
+            <option selected value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+      </div>
+      <!-- Query by radius  -->
+      <div id="geo-query-container"> 
+        <input type="checkbox" id="radius-search" name="radius-search">
+        <label for="radius-search" style="margin-right: 1rem">Search within Stockholm area</label>
+      </div>
+    </header>
+    <div id="divider">Images</div>
+    <span id="gallery-feedback">You need to search for something to view any images.</span>
+    <div id="loading"></div>
+    <div id="gallery"></div>
+  </body>
+</html>
